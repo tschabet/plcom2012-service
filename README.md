@@ -224,6 +224,8 @@ Minimal request body (this is [`examples/questionnaire-response.json`](examples/
 }
 ```
 
+The `questionnaire` field of the request is not checked against `PLCOM_CANONICAL_BASE` and is returned unchanged. In real use it should point to the Questionnaire the response was filled in from, e.g. `{PLCOM_CANONICAL_BASE}/Questionnaire/plcom2012`. The example uses `https://example.org/fhir/...`, which is the default of `PLCOM_CANONICAL_BASE`.
+
 Answers may be given as follows:
 
 | Kind | Accepted |
