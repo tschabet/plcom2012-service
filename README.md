@@ -73,6 +73,16 @@ Use single quotes around the URL, otherwise your shell tries to expand `$plcom20
 the example `QuestionnaireResponse` plus a result group with `3.7994 %`. Interactive API docs are at
 http://localhost:8000/docs.
 
+## Test instance
+
+A running instance is available at <https://plcom2012.lab.schabetsberger.info> (interactive API docs at `/docs`). It is a lab deployment for testing: rate limited, no availability guarantee, and it may change or disappear without notice.
+
+**Use synthetic data only. Never send real patient data.** The instance runs with `PLCOM_CANONICAL_BASE=https://plcom2012.lab.schabetsberger.info/fhir`.
+
+```
+curl https://plcom2012.lab.schabetsberger.info/health
+```
+
 ## The Questionnaire (the form)
 
 `GET /fhir/Questionnaire/plcom2012` returns the reference Questionnaire, the same file as
