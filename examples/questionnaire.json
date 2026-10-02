@@ -1,0 +1,240 @@
+{
+  "resourceType": "Questionnaire",
+  "id": "plcom2012",
+  "url": "https://example.org/fhir/Questionnaire/plcom2012",
+  "version": "0.1.0",
+  "name": "PLCOm2012Input",
+  "title": "PLCOm2012 6-year lung cancer risk: input",
+  "status": "draft",
+  "subjectType": [
+    "Patient"
+  ],
+  "description": "Input of the PLCOm2012 model for current and former smokers. Result items are filled by plcom2012-service.",
+  "item": [
+    {
+      "linkId": "age",
+      "text": "Age (years)",
+      "type": "integer",
+      "required": true
+    },
+    {
+      "linkId": "race",
+      "text": "Race / ethnicity (optional)",
+      "type": "choice",
+      "required": false,
+      "answerOption": [
+        {
+          "valueCoding": {
+            "system": "https://example.org/fhir/CodeSystem/plcom2012-race",
+            "code": "white",
+            "display": "White"
+          }
+        },
+        {
+          "valueCoding": {
+            "system": "https://example.org/fhir/CodeSystem/plcom2012-race",
+            "code": "black",
+            "display": "Black or African American"
+          }
+        },
+        {
+          "valueCoding": {
+            "system": "https://example.org/fhir/CodeSystem/plcom2012-race",
+            "code": "hispanic",
+            "display": "Hispanic or Latino"
+          }
+        },
+        {
+          "valueCoding": {
+            "system": "https://example.org/fhir/CodeSystem/plcom2012-race",
+            "code": "asian",
+            "display": "Asian"
+          }
+        },
+        {
+          "valueCoding": {
+            "system": "https://example.org/fhir/CodeSystem/plcom2012-race",
+            "code": "american-indian-alaska-native",
+            "display": "American Indian or Alaska Native"
+          }
+        },
+        {
+          "valueCoding": {
+            "system": "https://example.org/fhir/CodeSystem/plcom2012-race",
+            "code": "native-hawaiian-pacific-islander",
+            "display": "Native Hawaiian or other Pacific Islander"
+          }
+        }
+      ]
+    },
+    {
+      "linkId": "education",
+      "text": "Highest education (level 1-6)",
+      "type": "choice",
+      "required": true,
+      "answerOption": [
+        {
+          "valueCoding": {
+            "system": "https://example.org/fhir/CodeSystem/plcom2012-education",
+            "code": "1",
+            "display": "Less than high-school graduate"
+          }
+        },
+        {
+          "valueCoding": {
+            "system": "https://example.org/fhir/CodeSystem/plcom2012-education",
+            "code": "2",
+            "display": "High-school graduate"
+          }
+        },
+        {
+          "valueCoding": {
+            "system": "https://example.org/fhir/CodeSystem/plcom2012-education",
+            "code": "3",
+            "display": "Some training after high school"
+          }
+        },
+        {
+          "valueCoding": {
+            "system": "https://example.org/fhir/CodeSystem/plcom2012-education",
+            "code": "4",
+            "display": "Some college"
+          }
+        },
+        {
+          "valueCoding": {
+            "system": "https://example.org/fhir/CodeSystem/plcom2012-education",
+            "code": "5",
+            "display": "College graduate"
+          }
+        },
+        {
+          "valueCoding": {
+            "system": "https://example.org/fhir/CodeSystem/plcom2012-education",
+            "code": "6",
+            "display": "Postgraduate or professional degree"
+          }
+        }
+      ]
+    },
+    {
+      "linkId": "bmi",
+      "text": "Body mass index (kg/m2)",
+      "type": "decimal",
+      "required": false
+    },
+    {
+      "linkId": "height-cm",
+      "text": "Height (cm), alternative to BMI",
+      "type": "decimal",
+      "required": false
+    },
+    {
+      "linkId": "weight-kg",
+      "text": "Weight (kg), alternative to BMI",
+      "type": "decimal",
+      "required": false
+    },
+    {
+      "linkId": "copd",
+      "text": "Chronic obstructive pulmonary disease (COPD)",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "linkId": "personal-cancer-history",
+      "text": "Personal history of cancer",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "linkId": "family-history-lung-cancer",
+      "text": "Family history of lung cancer",
+      "type": "boolean",
+      "required": true
+    },
+    {
+      "linkId": "smoking-status",
+      "text": "Smoking status",
+      "type": "choice",
+      "required": true,
+      "answerOption": [
+        {
+          "valueCoding": {
+            "system": "https://example.org/fhir/CodeSystem/plcom2012-smoking-status",
+            "code": "current",
+            "display": "Current smoker"
+          }
+        },
+        {
+          "valueCoding": {
+            "system": "https://example.org/fhir/CodeSystem/plcom2012-smoking-status",
+            "code": "former",
+            "display": "Former smoker"
+          }
+        }
+      ]
+    },
+    {
+      "linkId": "cigarettes-per-day",
+      "text": "Cigarettes per day",
+      "type": "decimal",
+      "required": true
+    },
+    {
+      "linkId": "smoking-duration-years",
+      "text": "Years of smoking",
+      "type": "decimal",
+      "required": true
+    },
+    {
+      "linkId": "quit-years",
+      "text": "Years since quitting",
+      "type": "decimal",
+      "required": true,
+      "enableWhen": [
+        {
+          "question": "smoking-status",
+          "operator": "=",
+          "answerCoding": {
+            "system": "https://example.org/fhir/CodeSystem/plcom2012-smoking-status",
+            "code": "former"
+          }
+        }
+      ]
+    },
+    {
+      "linkId": "plcom2012-result",
+      "text": "PLCOm2012 result",
+      "type": "group",
+      "readOnly": true,
+      "item": [
+        {
+          "linkId": "plcom2012-risk-percent",
+          "text": "6-year lung cancer risk",
+          "type": "quantity",
+          "readOnly": true
+        },
+        {
+          "linkId": "plcom2012-race-handling",
+          "text": "Handling of race",
+          "type": "string",
+          "readOnly": true
+        },
+        {
+          "linkId": "plcom2012-model",
+          "text": "Model",
+          "type": "string",
+          "readOnly": true
+        },
+        {
+          "linkId": "plcom2012-warning",
+          "text": "Warnings",
+          "type": "string",
+          "readOnly": true,
+          "repeats": true
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "resourceType": "QuestionnaireResponse",
+  "id": "example-1",
+  "questionnaire": "https://example.org/fhir/Questionnaire/plcom2012",
+  "status": "completed",
+  "subject": {
+    "reference": "Patient/example"
+  },
+  "authored": "2026-10-01T09:00:00Z",
+  "item": [
+    {
+      "linkId": "age",
+      "answer": [
+        {
+          "valueInteger": 66
+        }
+      ]
+    },
+    {
+      "linkId": "education",
+      "answer": [
+        {
+          "valueCoding": {
+            "code": "4"
+          }
+        }
+      ]
+    },
+    {
+      "linkId": "bmi",
+      "answer": [
+        {
+          "valueDecimal": 26.5
+        }
+      ]
+    },
+    {
+      "linkId": "copd",
+      "answer": [
+        {
+          "valueBoolean": false
+        }
+      ]
+    },
+    {
+      "linkId": "personal-cancer-history",
+      "answer": [
+        {
+          "valueBoolean": false
+        }
+      ]
+    },
+    {
+      "linkId": "family-history-lung-cancer",
+      "answer": [
+        {
+          "valueBoolean": true
+        }
+      ]
+    },
+    {
+      "linkId": "smoking-status",
+      "answer": [
+        {
+          "valueCoding": {
+            "code": "former"
+          }
+        }
+      ]
+    },
+    {
+      "linkId": "cigarettes-per-day",
+      "answer": [
+        {
+          "valueDecimal": 20
+        }
+      ]
+    },
+    {
+      "linkId": "smoking-duration-years",
+      "answer": [
+        {
+          "valueDecimal": 40
+        }
+      ]
+    },
+    {
+      "linkId": "quit-years",
+      "answer": [
+        {
+          "valueDecimal": 5
+        }
+      ]
+    },
+    {
+      "linkId": "plcom2012-result",
+      "text": "PLCOm2012 result",
+      "item": [
+        {
+          "linkId": "plcom2012-risk-percent",
+          "text": "6-year lung cancer risk",
+          "answer": [
+            {
+              "valueQuantity": {
+                "value": 3.7994,
+                "unit": "%",
+                "system": "http://unitsofmeasure.org",
+                "code": "%"
+              }
+            }
+          ]
+        },
+        {
+          "linkId": "plcom2012-race-handling",
+          "text": "Handling of race",
+          "answer": [
+            {
+              "valueString": "Race not provided: no race term applied (identical to the reference category White / American Indian / Alaska Native)."
+            }
+          ]
+        },
+        {
+          "linkId": "plcom2012-model",
+          "text": "Model",
+          "answer": [
+            {
+              "valueString": "PLCOm2012 (Tammemägi et al., N Engl J Med 2013;368:728-736); plcom2012-service 0.1.0"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

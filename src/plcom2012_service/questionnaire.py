@@ -109,6 +109,7 @@ def build_questionnaire(canonical_base: str, linkids: dict[str, str]) -> dict[st
                 "quit_years",
                 "Years since quitting",
                 "decimal",
+                required=True,  # only applies while enabled, i.e. for former smokers
                 enableWhen=[
                     {
                         "question": L["smoking_status"],
