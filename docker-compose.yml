@@ -1,0 +1,18 @@
+services:
+  plcom2012:
+    build: .
+    image: plcom2012-service:latest
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      # Set a key to require "X-API-Key: <key>" on the POST endpoint.
+      PLCOM_API_KEY: "${PLCOM_API_KEY:-}"
+      # Use your own namespace for canonical URLs (CodeSystem, Questionnaire).
+      PLCOM_CANONICAL_BASE: "${PLCOM_CANONICAL_BASE:-https://example.org/fhir}"
+    # Behind Traefik instead of publishing a port, something like:
+    # labels:
+    #   - traefik.enable=true
+    #   - traefik.http.routers.plcom.rule=Host(`plcom.example.org`)
+    #   - traefik.http.routers.plcom.tls.certresolver=letsencrypt
+    #   - traefik.http.services.plcom.loadbalancer.server.port=8000
