@@ -48,6 +48,10 @@ Checks health, the reference Questionnaire, both output modes, the 400 and 422 e
 ## Notes
 
 - The `Dockerfile` has not been built in CI yet; the first build on the target is the first real test.
-- Dependencies are lower-bounded, not pinned (`pyproject.toml`). For reproducible images, pin with
-  `pip freeze` into a constraints file after the first successful build.
+- The image build is pinned: the `Dockerfile` installs with `pip install -c constraints.txt .`. The file
+  was taken from `pip freeze` of a verified build on `python:3.12-slim` (smoke test: ALL OK; the pinned
+  build was reproduced on a second host). `pyproject.toml` stays lower-bounded, and CI and local
+  development stay unpinned on purpose. To update the pins: build without them, run `pip freeze` in
+  the container (without the `plcom2012-service` line), run `scripts/smoke_test.sh`, then commit the
+  new file. The base image tag `python:3.12-slim` itself is not pinned.
 - Not a certified medical device, see README.
